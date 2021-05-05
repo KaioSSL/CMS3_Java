@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="carteiraMembro" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9cd813d2-e62a-4c85-a24e-7dabb2bd248c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="cpf" class="java.lang.String"/>
+	<parameter name="logo" class="java.awt.Image"/>
+	<queryString>
+		<![CDATA[SELECT
+     membros.`idMembro` AS membros_idMembro,
+     membros.`Pessoa_cpfPessoa` AS membros_Pessoa_cpfPessoa,
+     membros.`email` AS membros_email,
+     membros.`telefone` AS membros_telefone,
+     membros.`dataRegistro` AS membros_dataRegistro,
+     membros.`foto` AS membros_foto,
+     membros.`dataBatismo` AS membros_dataBatismo,
+     membros.`numDependentes` AS membros_numDependentes,
+     membros.`desligado` AS membros_desligado,
+     membros.`cargo` AS membros_cargo,
+     membros.`disciplinado` AS membros_disciplinado,
+     membros.`usuario` AS membros_usuario,
+     pessoa.`cpf` AS pessoa_cpf,
+     pessoa.`nome` AS pessoa_nome,
+     pessoa.`endereço` AS pessoa_endereço,
+     pessoa.`dataNascimento` AS pessoa_dataNascimento,
+     pessoa.`estadoCivil` AS pessoa_estadoCivil,
+     pessoa.`RG` AS pessoa_RG,
+     pessoa.`naturalidade` AS pessoa_naturalidade
+FROM
+     `pessoa` pessoa INNER JOIN `membros` membros ON pessoa.`cpf` = membros.`Pessoa_cpfPessoa` WHERE pessoa.`cpf`= $P{cpf}]]>
+	</queryString>
+	<field name="membros_idMembro" class="java.lang.Integer"/>
+	<field name="membros_Pessoa_cpfPessoa" class="java.lang.String"/>
+	<field name="membros_email" class="java.lang.String"/>
+	<field name="membros_telefone" class="java.lang.String"/>
+	<field name="membros_dataRegistro" class="java.sql.Date"/>
+	<field name="membros_foto" class="java.lang.String"/>
+	<field name="membros_dataBatismo" class="java.sql.Date"/>
+	<field name="membros_numDependentes" class="java.lang.String"/>
+	<field name="membros_desligado" class="java.lang.Integer"/>
+	<field name="membros_cargo" class="java.lang.Integer"/>
+	<field name="membros_disciplinado" class="java.lang.Integer"/>
+	<field name="membros_usuario" class="java.lang.Integer"/>
+	<field name="pessoa_cpf" class="java.lang.String"/>
+	<field name="pessoa_nome" class="java.lang.String"/>
+	<field name="pessoa_endereço" class="java.lang.String"/>
+	<field name="pessoa_dataNascimento" class="java.sql.Date"/>
+	<field name="pessoa_estadoCivil" class="java.lang.Integer"/>
+	<field name="pessoa_RG" class="java.lang.String"/>
+	<field name="pessoa_naturalidade" class="java.lang.String"/>
+	<group name="pessoa_nome">
+		<groupExpression><![CDATA[$F{pessoa_nome}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="152" splitType="Stretch">
+			<image scaleImage="RetainShape">
+				<reportElement x="0" y="0" width="256" height="142" uuid="3cbe180a-ce21-4804-8c98-e6b35ee123b7"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="81" splitType="Stretch">
+			<textField>
+				<reportElement x="111" y="13" width="111" height="13" backcolor="#3366FF" uuid="b939921f-76fe-43bb-873c-612a562194a7"/>
+				<textFieldExpression><![CDATA[$F{pessoa_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="66" width="111" height="13" uuid="92aa0362-24fe-4820-be28-fdbc268601ad"/>
+				<textFieldExpression><![CDATA[$F{pessoa_cpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="13" width="152" height="13" uuid="4b386a33-ce04-4d9f-b33b-2100f9dfea11"/>
+				<textFieldExpression><![CDATA[$F{membros_dataBatismo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="39" width="111" height="13" uuid="374a7a41-64b4-48d7-8d2e-dd79cf059dfc"/>
+				<textFieldExpression><![CDATA[$F{membros_idMembro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="40" width="111" height="13" uuid="d81e3016-979c-4723-95c4-ead397d472d9"/>
+				<textFieldExpression><![CDATA[$F{pessoa_RG}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="111" y="0" width="111" height="13" forecolor="#FFFFFF" backcolor="#3366FF" uuid="d48f35e6-e7a6-4c9a-8252-f93b72a5f879"/>
+				<text><![CDATA[Nome:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="111" y="53" width="111" height="13" forecolor="#FFFFFF" backcolor="#3366FF" uuid="b4aaed8e-9915-489d-b16d-973c69f11256"/>
+				<text><![CDATA[CPF:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="111" y="26" width="111" height="13" forecolor="#FFFFFF" backcolor="#3366FF" uuid="7be37710-6762-4601-8efb-53c557f3607e"/>
+				<text><![CDATA[RG:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="111" height="79" uuid="80d5bc37-dc72-404f-a530-a42c78ff1731"/>
+				<imageExpression><![CDATA[$F{membros_foto}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="272" y="0" width="111" height="13" forecolor="#FFFFFF" backcolor="#3366FF" uuid="6036884c-b7be-44b3-8245-6662e4429430"/>
+				<text><![CDATA[Data Batismo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="272" y="26" width="111" height="13" forecolor="#FFFFFF" backcolor="#3366FF" uuid="78c25340-3fdd-4eac-901b-42069809d934"/>
+				<text><![CDATA[Registro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="272" y="53" width="111" height="13" forecolor="#FFFFFF" backcolor="#3366FF" uuid="98f5a71a-b814-4693-a9e0-f0d48dd72cc9"/>
+				<text><![CDATA[Data Registro:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="272" y="66" width="100" height="13" uuid="809e093c-214d-4394-b31c-73553d1a4a14"/>
+				<textFieldExpression><![CDATA[$F{membros_dataRegistro}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

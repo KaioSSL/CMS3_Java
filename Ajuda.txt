@@ -1,0 +1,40 @@
+Membros :
+
+Menu Membros - Cadastrar Membro:
+
+	Ao clicar em menu membros irá abrir o painel de controle mostrando todos os membros cadastrados.
+	Ao clicar em Cadastrar Membro irá abrir o painel de Cadastro de Membros.
+
+Disciplinas - Cadastrar Disciplina:
+
+	Ao clicar em Disciplinas ira abrir o painel de controle mostrando todas disciplinas registradas.
+	Ao clicar em Cadastrar Disciplina irá abrir o painel de Cadastro de Disciplina, só é possível se existir algum membro já cadastrado no sistema!!!!
+
+Desligamentos - Cadastrar Desligamento:
+
+	Ao clicar em Desligamentos ira abrir o painel de controle mostrando todos desligamentos registrados.
+	Ao clicar em Cadastrar Desligamento irá abrir o painel de Cadastro de Desligamento.só é possível se existir algum membro já cadastrado no sistema!!!!
+
+Consagrações - Cadastrar Consagração:
+
+	Ao clicar em Consgrações ira abrir o painel de controle mostrando todas Consagrações registradas.
+	Ao clicar em Cadastrar Consagração irá abrir o painel de Cadastro de Consagração.só é possível se existir algum membro já cadastrado no sistema!!!!
+
+Financas :
+
+Caixas e Setores - Cadastrar Setor
+	            - Cadastrar  Caixa
+
+	Ao clicar em Caixas e Setores, irá abrir o painel de controle mostrando todos os Caixas e Setores cadastrados.
+	Ao clicar em Cadastrar Setores, irá abrir o painel de cadastro de setores.
+	Ao clicar em Cadastrar Caixa, irá abrir o Painel de cadastro de caixa. Só é possível se existir algum setor já cadastrado no sistema!!!!
+
+Ofertas e Dizimos  - Cadastrar Oferta
+	              - Cadastrar Dizimo
+
+	Ao clicar em Ofertas e Dizimos, irá abrir o painel de controle mostrando todos os Ofertas e Dizimos cadastrados.
+	Ao clicar em Cadastrar Oferta, irá abrir o painel de Cadastro de Ofertas.Só é possível se existir algum caixa registrado!!!!
+	Ao clicar em Cadastrar Dizimo, irá abrir o painel de Cadastro de Dizimos(Depositados sempre no caixa principal chamado "Igreja").
+Contas - Sua conta	
+	
+	Ao clicar em Sua Conta, irá abrir o painel de controle da conta do usuário permitindo alterações.

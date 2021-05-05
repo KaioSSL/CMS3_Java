@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorioDizimos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d05f5e45-ba1f-4b95-9df6-424673c79c1c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="dataFim" class="java.util.Date"/>
+	<parameter name="logo" class="java.awt.Image"/>
+	<queryString>
+		<![CDATA[SELECT
+     membros.`idMembro` AS membros_idMembro,
+     membros.`Pessoa_cpfPessoa` AS membros_Pessoa_cpfPessoa,
+     membros.`email` AS membros_email,
+     membros.`telefone` AS membros_telefone,
+     membros.`dataRegistro` AS membros_dataRegistro,
+     membros.`foto` AS membros_foto,
+     membros.`dataBatismo` AS membros_dataBatismo,
+     membros.`numDependentes` AS membros_numDependentes,
+     membros.`desligado` AS membros_desligado,
+     membros.`cargo` AS membros_cargo,
+     membros.`disciplinado` AS membros_disciplinado,
+     membros.`usuario` AS membros_usuario,
+     pessoa.`cpf` AS pessoa_cpf,
+     pessoa.`nome` AS pessoa_nome,
+     pessoa.`endereço` AS pessoa_endereço,
+     pessoa.`dataNascimento` AS pessoa_dataNascimento,
+     pessoa.`estadoCivil` AS pessoa_estadoCivil,
+     pessoa.`RG` AS pessoa_RG,
+     pessoa.`naturalidade` AS pessoa_naturalidade,
+     dizimos.`idDizimos` AS dizimos_idDizimos,
+     dizimos.`Pessoa_cpfPessoa` AS dizimos_Pessoa_cpfPessoa,
+     dizimos.`valor` AS dizimos_valor,
+     dizimos.`data` AS dizimos_data
+FROM
+     `pessoa` pessoa INNER JOIN `membros` membros ON pessoa.`cpf` = membros.`Pessoa_cpfPessoa`
+     INNER JOIN `dizimos` dizimos ON pessoa.`cpf` = dizimos.`Pessoa_cpfPessoa` WHERE dizimos.`data` < $P{dataFim}]]>
+	</queryString>
+	<field name="membros_idMembro" class="java.lang.Integer"/>
+	<field name="membros_Pessoa_cpfPessoa" class="java.lang.String"/>
+	<field name="membros_email" class="java.lang.String"/>
+	<field name="membros_telefone" class="java.lang.String"/>
+	<field name="membros_dataRegistro" class="java.sql.Date"/>
+	<field name="membros_foto" class="java.lang.String"/>
+	<field name="membros_dataBatismo" class="java.sql.Date"/>
+	<field name="membros_numDependentes" class="java.lang.String"/>
+	<field name="membros_desligado" class="java.lang.Integer"/>
+	<field name="membros_cargo" class="java.lang.Integer"/>
+	<field name="membros_disciplinado" class="java.lang.Integer"/>
+	<field name="membros_usuario" class="java.lang.Integer"/>
+	<field name="pessoa_cpf" class="java.lang.String"/>
+	<field name="pessoa_nome" class="java.lang.String"/>
+	<field name="pessoa_endereço" class="java.lang.String"/>
+	<field name="pessoa_dataNascimento" class="java.sql.Date"/>
+	<field name="pessoa_estadoCivil" class="java.lang.Integer"/>
+	<field name="pessoa_RG" class="java.lang.String"/>
+	<field name="pessoa_naturalidade" class="java.lang.String"/>
+	<field name="dizimos_idDizimos" class="java.lang.Integer"/>
+	<field name="dizimos_Pessoa_cpfPessoa" class="java.lang.String"/>
+	<field name="dizimos_valor" class="java.lang.Integer"/>
+	<field name="dizimos_data" class="java.lang.String"/>
+	<group name="pessoa_nome">
+		<groupExpression><![CDATA[$F{pessoa_nome}]]></groupExpression>
+		<groupHeader>
+			<band height="28">
+				<frame>
+					<reportElement mode="Opaque" x="0" y="0" width="555" height="28" backcolor="#3366FF" uuid="076fe1ec-cd8c-46d4-b8e6-180f005b377e"/>
+					<staticText>
+						<reportElement mode="Transparent" x="317" y="0" width="89" height="26" forecolor="#FFFFFF" backcolor="#3366FF" uuid="183fead8-295c-47e9-83cf-026998e8f945"/>
+						<textElement>
+							<font size="16"/>
+						</textElement>
+						<text><![CDATA[ID Dizimo]]></text>
+					</staticText>
+					<textField>
+						<reportElement x="58" y="3" width="100" height="23" forecolor="#FFFFFF" uuid="40ec3fe0-745b-4bdb-89c7-34490d03e4bd"/>
+						<textElement>
+							<font size="16" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{pessoa_nome}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement mode="Transparent" x="0" y="0" width="58" height="26" forecolor="#FFFFFF" backcolor="#3366FF" uuid="5052cff3-5afa-490a-89ca-ec395d62a0a1"/>
+						<textElement>
+							<font size="16"/>
+						</textElement>
+						<text><![CDATA[Nome :]]></text>
+					</staticText>
+					<textField>
+						<reportElement x="424" y="3" width="100" height="23" forecolor="#FFFFFF" uuid="7adf6dcf-516c-45e7-b122-87b7b42eb073"/>
+						<textElement>
+							<font size="16"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{dizimos_idDizimos}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+	</group>
+	<title>
+		<band height="154" splitType="Stretch">
+			<image>
+				<reportElement x="24" y="0" width="500" height="150" uuid="107e9e37-e6ea-4d65-9fcb-210a1433fdc1"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="38" backcolor="#3366FF" uuid="ba21ba97-1fd7-44fa-8b19-7ab35d800de5"/>
+				<textField>
+					<reportElement x="355" y="3" width="200" height="35" forecolor="#FFFFFF" uuid="e3778749-8a91-4341-908f-d78a1d89ce6c"/>
+					<textElement>
+						<font size="26" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="1" width="306" height="35" forecolor="#FFFFFF" uuid="47c8f4fd-f039-4375-a1c2-80ddb76c96ef"/>
+					<textElement>
+						<font size="26"/>
+					</textElement>
+					<text><![CDATA[Relatório Dizímos]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="138" height="20" uuid="8d3d4709-8a03-45d9-a1e4-381aeb602fa7"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[ID Membro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="0" width="138" height="20" uuid="884efd31-5f0f-44c8-8b82-573bd91949c2"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[CPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="0" width="138" height="20" uuid="6744cb8f-4c0a-4cd8-a8ba-3310392a8ab2"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="0" width="138" height="20" uuid="129ceeba-1c2a-4fdd-88aa-bf8c82d989d8"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[Data]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="138" height="20" uuid="5d7adaa4-7f41-4c3f-925a-409a187cc790"/>
+				<textFieldExpression><![CDATA[$F{membros_idMembro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="0" width="138" height="20" uuid="15ce1617-6003-4ba1-86c0-9fb808507ded"/>
+				<textFieldExpression><![CDATA[$F{pessoa_cpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="138" height="20" uuid="87ffcca9-4780-4a02-89d1-82adb9de23ca"/>
+				<textFieldExpression><![CDATA[$F{dizimos_valor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="0" width="138" height="20" uuid="f97564bf-2727-470e-9bc4-fd6d848de9f6"/>
+				<textFieldExpression><![CDATA[$F{dizimos_data}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

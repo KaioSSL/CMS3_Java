@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="teste" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b9870e83-2006-4146-8b2e-2a2fd9584c61">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="java.awt.Image" isForPrompting="false"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     membros.`idMembro` AS membros_idMembro,
+     membros.`Pessoa_cpfPessoa` AS membros_Pessoa_cpfPessoa,
+     membros.`email` AS membros_email,
+     membros.`telefone` AS membros_telefone,
+     membros.`dataRegistro` AS membros_dataRegistro,
+     membros.`foto` AS membros_foto,
+     membros.`dataBatismo` AS membros_dataBatismo,
+     membros.`numDependentes` AS membros_numDependentes,
+     membros.`desligado` AS membros_desligado,
+     membros.`cargo` AS membros_cargo,
+     membros.`disciplinado` AS membros_disciplinado,
+     membros.`usuario` AS membros_usuario,
+     modousuario.`id` AS modousuario_id,
+     modousuario.`dsc` AS modousuario_dsc,
+     pessoa.`cpf` AS pessoa_cpf,
+     pessoa.`nome` AS pessoa_nome,
+     pessoa.`endereço` AS pessoa_endereço,
+     pessoa.`dataNascimento` AS pessoa_dataNascimento,
+     pessoa.`estadoCivil` AS pessoa_estadoCivil,
+     pessoa.`RG` AS pessoa_RG,
+     pessoa.`naturalidade` AS pessoa_naturalidade,
+     usuario.`login` AS usuario_login,
+     usuario.`senha` AS usuario_senha,
+     usuario.`data` AS usuario_data,
+     usuario.`Pessoa_cpfPessoa` AS usuario_Pessoa_cpfPessoa,
+     usuario.`modoUsuario` AS usuario_modoUsuario
+FROM
+     `pessoa` pessoa INNER JOIN `membros` membros ON pessoa.`cpf` = membros.`Pessoa_cpfPessoa`
+     INNER JOIN `usuario` usuario ON pessoa.`cpf` = usuario.`Pessoa_cpfPessoa`
+     INNER JOIN `modousuario` modousuario ON usuario.`modoUsuario` = modousuario.`id`]]>
+	</queryString>
+	<field name="membros_idMembro" class="java.lang.Integer"/>
+	<field name="membros_Pessoa_cpfPessoa" class="java.lang.String"/>
+	<field name="membros_email" class="java.lang.String"/>
+	<field name="membros_telefone" class="java.lang.String"/>
+	<field name="membros_dataRegistro" class="java.sql.Date"/>
+	<field name="membros_foto" class="java.lang.String"/>
+	<field name="membros_dataBatismo" class="java.sql.Date"/>
+	<field name="membros_numDependentes" class="java.lang.String"/>
+	<field name="membros_desligado" class="java.lang.Integer"/>
+	<field name="membros_cargo" class="java.lang.Integer"/>
+	<field name="membros_disciplinado" class="java.lang.Integer"/>
+	<field name="membros_usuario" class="java.lang.Integer"/>
+	<field name="modousuario_id" class="java.lang.Integer"/>
+	<field name="modousuario_dsc" class="java.lang.String"/>
+	<field name="pessoa_cpf" class="java.lang.String"/>
+	<field name="pessoa_nome" class="java.lang.String"/>
+	<field name="pessoa_endereço" class="java.lang.String"/>
+	<field name="pessoa_dataNascimento" class="java.sql.Date"/>
+	<field name="pessoa_estadoCivil" class="java.lang.Integer"/>
+	<field name="pessoa_RG" class="java.lang.String"/>
+	<field name="pessoa_naturalidade" class="java.lang.String"/>
+	<field name="usuario_login" class="java.lang.String"/>
+	<field name="usuario_senha" class="java.lang.String"/>
+	<field name="usuario_data" class="java.lang.String"/>
+	<field name="usuario_Pessoa_cpfPessoa" class="java.lang.String"/>
+	<field name="usuario_modoUsuario" class="java.lang.Integer"/>
+	<group name="pessoa_nome">
+		<groupExpression><![CDATA[$F{pessoa_nome}]]></groupExpression>
+		<groupHeader>
+			<band height="26">
+				<frame>
+					<reportElement mode="Opaque" x="1" y="0" width="554" height="26" forecolor="#FFFFFF" backcolor="#3366FF" uuid="324671c0-7fb8-49f6-9ee0-bef8b8d828f8"/>
+					<staticText>
+						<reportElement mode="Transparent" x="0" y="0" width="58" height="26" forecolor="#FFFFFF" backcolor="#3366FF" uuid="82f2b7ea-3be7-4f09-86f0-6b8b8fec5384"/>
+						<textElement>
+							<font size="16"/>
+						</textElement>
+						<text><![CDATA[Nome :]]></text>
+					</staticText>
+					<textField>
+						<reportElement x="70" y="3" width="100" height="23" forecolor="#FFFFFF" uuid="595b8b69-41cd-448b-b520-c23048c389f2"/>
+						<textElement>
+							<font size="16" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{pessoa_nome}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="360" y="0" width="156" height="26" forecolor="#FFFFFF" uuid="a7f71ce2-d870-4a63-aab7-b3340239d799"/>
+						<textElement>
+							<font size="16"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{membros_dataRegistro}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement mode="Transparent" x="170" y="0" width="89" height="26" forecolor="#FFFFFF" backcolor="#3366FF" uuid="51d90494-8835-4a74-a156-149beabcc767"/>
+						<textElement>
+							<font size="16"/>
+						</textElement>
+						<text><![CDATA[ID Membro]]></text>
+					</staticText>
+					<textField>
+						<reportElement x="259" y="0" width="100" height="23" forecolor="#FFFFFF" uuid="7f2f07e3-3b82-4b76-92f5-58ef9fa2334b"/>
+						<textElement>
+							<font size="16"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{membros_idMembro}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="162" splitType="Stretch">
+			<image>
+				<reportElement x="1" y="0" width="446" height="162" uuid="c8b51362-4a3e-4518-83bd-3a89d4649a07"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="39" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="38" backcolor="#3366FF" uuid="92a66600-cb83-4962-869d-73db0e6aa42e"/>
+				<textField>
+					<reportElement x="341" y="3" width="214" height="35" forecolor="#FFFFFF" uuid="dd3001ba-2916-491f-9eb8-2eae0bfce102"/>
+					<textElement>
+						<font size="26" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="1" width="306" height="35" forecolor="#FFFFFF" uuid="f838ecf8-1656-4e9f-9426-0d754bfff8bb"/>
+					<textElement>
+						<font size="26"/>
+					</textElement>
+					<text><![CDATA[Relatório Membros]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="138" height="20" uuid="1bbf56b0-f57f-4ea4-898d-64f9bfce12f8"/>
+				<text><![CDATA[Login]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="0" width="138" height="20" uuid="677bc351-70c8-4857-a5ce-e1b47fbc8de1"/>
+				<text><![CDATA[Senha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="0" width="138" height="20" uuid="cfc21a40-e8d3-401b-86d1-40ca6c4a6dcf"/>
+				<text><![CDATA[Data Registro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="0" width="138" height="20" uuid="84e8a226-d419-4e30-81da-41646300e1a6"/>
+				<text><![CDATA[Modo Usuario]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="138" height="20" uuid="4119eee2-c271-4020-b62e-882be334789c"/>
+				<textFieldExpression><![CDATA[$F{usuario_login}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="0" width="138" height="20" uuid="90243ce0-b58e-4576-9153-2a071b5635de"/>
+				<textFieldExpression><![CDATA[$F{usuario_senha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="138" height="20" uuid="4ae64205-b534-4495-b0e2-7e4dec55087d"/>
+				<textFieldExpression><![CDATA[$F{usuario_data}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="0" width="138" height="20" uuid="90dff57f-78e7-4a33-8b3f-d67e8f56371e"/>
+				<textFieldExpression><![CDATA[$F{modousuario_dsc}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

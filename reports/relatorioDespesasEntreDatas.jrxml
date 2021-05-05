@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorioDespesas" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fedc5d6c-2fc6-4581-ac0f-7f394663ab4e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="dataInicio" class="java.util.Date"/>
+	<parameter name="logo" class="java.awt.Image"/>
+	<parameter name="dataFim" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT
+     setores.`nome` AS setores_nome,
+     setores.`foto` AS setores_foto,
+     setores.`idSetores` AS setores_idSetores,
+     setores.`dsc` AS setores_dsc,
+     setores.`data` AS setores_data,
+     caixas.`Setores_idSetores` AS caixas_Setores_idSetores,
+     caixas.`idCaixa` AS caixas_idCaixa,
+     caixas.`dsc` AS caixas_dsc,
+     caixas.`receita` AS caixas_receita,
+     caixas.`data` AS caixas_data,
+     despesas.`idDespesa` AS despesas_idDespesa,
+     despesas.`valor` AS despesas_valor,
+     despesas.`data` AS despesas_data,
+     despesas.`dsc` AS despesas_dsc,
+     despesas.`Setores_idSetores` AS despesas_Setores_idSetores
+FROM
+     `setores` setores INNER JOIN `caixas` caixas ON setores.`idSetores` = caixas.`Setores_idSetores`
+     INNER JOIN `despesas` despesas ON setores.`idSetores` = despesas.`Setores_idSetores` WHERE despesas.`data`> $P{dataInicio}
+and  despesas.`data` < $P{dataFim}]]>
+	</queryString>
+	<field name="setores_nome" class="java.lang.String"/>
+	<field name="setores_foto" class="java.lang.String"/>
+	<field name="setores_idSetores" class="java.lang.Integer"/>
+	<field name="setores_dsc" class="java.lang.String"/>
+	<field name="setores_data" class="java.sql.Date"/>
+	<field name="caixas_Setores_idSetores" class="java.lang.Integer"/>
+	<field name="caixas_idCaixa" class="java.lang.Integer"/>
+	<field name="caixas_dsc" class="java.lang.String"/>
+	<field name="caixas_receita" class="java.lang.Double"/>
+	<field name="caixas_data" class="java.sql.Date"/>
+	<field name="despesas_idDespesa" class="java.lang.Integer"/>
+	<field name="despesas_valor" class="java.lang.Double"/>
+	<field name="despesas_data" class="java.sql.Date"/>
+	<field name="despesas_dsc" class="java.lang.String"/>
+	<field name="despesas_Setores_idSetores" class="java.lang.Integer"/>
+	<group name="setores_nome">
+		<groupExpression><![CDATA[$F{setores_nome}]]></groupExpression>
+		<groupHeader>
+			<band height="26">
+				<frame>
+					<reportElement mode="Opaque" x="0" y="0" width="802" height="26" forecolor="#FFFFFF" backcolor="#3366FF" uuid="7ae2af40-d2e2-4eff-b611-7576260676da"/>
+					<staticText>
+						<reportElement mode="Transparent" x="0" y="0" width="58" height="26" forecolor="#FFFFFF" backcolor="#3366FF" uuid="553bf486-3b9b-4b91-97d6-8529c8358cd6"/>
+						<textElement>
+							<font size="16"/>
+						</textElement>
+						<text><![CDATA[Setor :]]></text>
+					</staticText>
+					<textField>
+						<reportElement x="58" y="0" width="100" height="26" forecolor="#FFFFFF" uuid="5c0a484d-1fcb-4b4a-97cf-bc621c225031"/>
+						<textElement>
+							<font size="16" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{setores_nome}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="603" y="0" width="198" height="26" forecolor="#FFFFFF" uuid="76e0fbd5-ecd3-421e-8fb6-bac9b21cf80e"/>
+						<textElement>
+							<font size="16"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{caixas_data}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement mode="Transparent" x="198" y="0" width="82" height="26" forecolor="#FFFFFF" backcolor="#3366FF" uuid="1f9149df-bd34-44a0-b651-314ffd47934c"/>
+						<textElement>
+							<font size="16"/>
+						</textElement>
+						<text><![CDATA[ID Caixa:]]></text>
+					</staticText>
+					<textField>
+						<reportElement x="280" y="0" width="44" height="26" forecolor="#FFFFFF" uuid="df83beb8-3f0d-4e9b-a24a-3cec7a0233b8"/>
+						<textElement>
+							<font size="16"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{caixas_idCaixa}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement mode="Transparent" x="521" y="0" width="82" height="26" forecolor="#FFFFFF" backcolor="#3366FF" uuid="80e0041e-79cf-4b92-bc37-e7108c58465f"/>
+						<textElement>
+							<font size="16"/>
+						</textElement>
+						<text><![CDATA[Registro:]]></text>
+					</staticText>
+				</frame>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="184" splitType="Stretch">
+			<image>
+				<reportElement x="145" y="10" width="500" height="150" uuid="91976994-55c9-47f0-bd5b-6cfd71525724"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="38" backcolor="#3366FF" uuid="4d26d92f-8ac1-47a5-ab48-f699b3340484"/>
+				<textField>
+					<reportElement x="542" y="0" width="239" height="35" forecolor="#FFFFFF" uuid="d846b382-b17f-4ac1-b3d8-39ba19177299"/>
+					<textElement>
+						<font size="26" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="1" width="306" height="35" forecolor="#FFFFFF" uuid="5f5d5917-6eec-4f3f-8adc-355e021c31f7"/>
+					<textElement>
+						<font size="26"/>
+					</textElement>
+					<text><![CDATA[Relatório Despesas]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="200" height="20" uuid="41b29a5e-2de5-46eb-9029-7e62bb9fa51a"/>
+				<text><![CDATA[ID Despesa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="200" height="20" uuid="4e6839fe-b3b8-4e52-914e-01a5fd4bf679"/>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="200" height="20" uuid="5e7d9e35-14c5-4288-b4ed-c75428101c46"/>
+				<text><![CDATA[Data Despesa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="600" y="0" width="200" height="20" uuid="1da15bf8-80e3-44c6-84ca-16b597de5f7f"/>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="200" height="20" uuid="2e0d2458-2b38-4267-8489-1b43932c9662"/>
+				<textFieldExpression><![CDATA[$F{despesas_idDespesa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="200" height="20" uuid="5d027b33-effc-4b0f-a398-59790c72eed4"/>
+				<textFieldExpression><![CDATA[$F{despesas_valor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="200" height="20" uuid="b9b548dd-13d5-4bac-bb5c-4a287804e91f"/>
+				<textFieldExpression><![CDATA[$F{despesas_data}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="600" y="0" width="200" height="20" uuid="c85a4b35-66f3-4014-b30e-0d5549fd2e45"/>
+				<textFieldExpression><![CDATA[$F{despesas_dsc}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

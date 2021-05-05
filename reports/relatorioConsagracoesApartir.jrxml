@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorioConsagracoes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5d25bb12-ebb1-4c5b-9d56-4f84ec680b12">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="dataInicio" class="java.util.Date"/>
+	<parameter name="logo" class="java.awt.Image"/>
+	<queryString>
+		<![CDATA[SELECT
+     consagração.`idConsagração` AS consagração_idConsagração,
+     consagração.`dsc` AS consagração_dsc,
+     consagração.`Cargos_idCargo` AS consagração_Cargos_idCargo,
+     consagração.`Pessoa_cpfPessoa` AS consagração_Pessoa_cpfPessoa,
+     consagração.`data` AS consagração_data,
+     pessoa.`cpf` AS pessoa_cpf,
+     pessoa.`nome` AS pessoa_nome,
+     pessoa.`endereço` AS pessoa_endereço,
+     pessoa.`dataNascimento` AS pessoa_dataNascimento,
+     pessoa.`estadoCivil` AS pessoa_estadoCivil,
+     pessoa.`RG` AS pessoa_RG,
+     pessoa.`naturalidade` AS pessoa_naturalidade,
+     cargos.`idCargo` AS cargos_idCargo,
+     cargos.`dsc` AS cargos_dsc,
+     membros.`idMembro` AS membros_idMembro,
+     membros.`Pessoa_cpfPessoa` AS membros_Pessoa_cpfPessoa,
+     membros.`email` AS membros_email,
+     membros.`telefone` AS membros_telefone,
+     membros.`dataRegistro` AS membros_dataRegistro,
+     membros.`foto` AS membros_foto,
+     membros.`dataBatismo` AS membros_dataBatismo,
+     membros.`numDependentes` AS membros_numDependentes,
+     membros.`desligado` AS membros_desligado,
+     membros.`cargo` AS membros_cargo,
+     membros.`disciplinado` AS membros_disciplinado,
+     membros.`usuario` AS membros_usuario
+FROM
+     `pessoa` pessoa INNER JOIN `consagração` consagração ON pessoa.`cpf` = consagração.`Pessoa_cpfPessoa`
+     INNER JOIN `cargos` cargos ON consagração.`Cargos_idCargo` = cargos.`idCargo`
+     INNER JOIN `membros` membros ON cargos.`idCargo` = membros.`cargo`
+     AND pessoa.`cpf` = membros.`Pessoa_cpfPessoa` WHERE consagração.`data` > $P{dataInicio}]]>
+	</queryString>
+	<field name="consagração_idConsagração" class="java.lang.Integer"/>
+	<field name="consagração_dsc" class="java.lang.String"/>
+	<field name="consagração_Cargos_idCargo" class="java.lang.Integer"/>
+	<field name="consagração_Pessoa_cpfPessoa" class="java.lang.String"/>
+	<field name="consagração_data" class="java.lang.String"/>
+	<field name="pessoa_cpf" class="java.lang.String"/>
+	<field name="pessoa_nome" class="java.lang.String"/>
+	<field name="pessoa_endereço" class="java.lang.String"/>
+	<field name="pessoa_dataNascimento" class="java.sql.Date"/>
+	<field name="pessoa_estadoCivil" class="java.lang.Integer"/>
+	<field name="pessoa_RG" class="java.lang.String"/>
+	<field name="pessoa_naturalidade" class="java.lang.String"/>
+	<field name="cargos_idCargo" class="java.lang.Integer"/>
+	<field name="cargos_dsc" class="java.lang.String"/>
+	<field name="membros_idMembro" class="java.lang.Integer"/>
+	<field name="membros_Pessoa_cpfPessoa" class="java.lang.String"/>
+	<field name="membros_email" class="java.lang.String"/>
+	<field name="membros_telefone" class="java.lang.String"/>
+	<field name="membros_dataRegistro" class="java.sql.Date"/>
+	<field name="membros_foto" class="java.lang.String"/>
+	<field name="membros_dataBatismo" class="java.sql.Date"/>
+	<field name="membros_numDependentes" class="java.lang.String"/>
+	<field name="membros_desligado" class="java.lang.Integer"/>
+	<field name="membros_cargo" class="java.lang.Integer"/>
+	<field name="membros_disciplinado" class="java.lang.Integer"/>
+	<field name="membros_usuario" class="java.lang.Integer"/>
+	<group name="consagração_idConsagração">
+		<groupExpression><![CDATA[$F{consagração_idConsagração}]]></groupExpression>
+		<groupHeader>
+			<band height="23">
+				<frame>
+					<reportElement mode="Opaque" x="0" y="0" width="555" height="22" backcolor="#3366FF" uuid="a365e575-62c0-4d84-99dc-dca61ca3ce4c"/>
+					<textField>
+						<reportElement x="124" y="0" width="61" height="21" forecolor="#FFFFFF" uuid="96dd51f0-b6d1-4d93-99d8-f7693edfdeda"/>
+						<textElement>
+							<font size="16"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{consagração_idConsagração}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="0" y="0" width="124" height="21" forecolor="#FFFFFF" uuid="6cd6d6fa-75c8-43b5-b27d-c321e74cbeb0"/>
+						<textElement>
+							<font size="16"/>
+						</textElement>
+						<text><![CDATA[Id Consagração:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="328" y="0" width="140" height="21" forecolor="#FFFFFF" uuid="942e8b1a-785c-4e8a-94dc-4dc616ad6803"/>
+						<textElement>
+							<font size="16"/>
+						</textElement>
+						<text><![CDATA[Data Consagração:]]></text>
+					</staticText>
+					<textField>
+						<reportElement x="468" y="0" width="87" height="21" forecolor="#FFFFFF" uuid="299fcee6-ab05-4730-bd6e-b82262df2b75"/>
+						<textElement>
+							<font size="16"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{consagração_data}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="227" splitType="Stretch">
+			<image>
+				<reportElement x="30" y="44" width="500" height="150" uuid="117d51fa-827f-4bbc-95ca-7dd48a2a00fd"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="38" backcolor="#3366FF" uuid="c1da6ddb-4119-41d8-a00e-ff25511c57b5"/>
+				<textField>
+					<reportElement x="381" y="1" width="174" height="35" forecolor="#FFFFFF" uuid="f6b81fff-87b0-4bfa-a4c9-fdc0afc0f0d7"/>
+					<textElement>
+						<font size="26" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="1" width="306" height="35" forecolor="#FFFFFF" uuid="dcfa2a07-591d-44be-91de-07cc67ca3a79"/>
+					<textElement>
+						<font size="26"/>
+					</textElement>
+					<text><![CDATA[Relatório Consagrações]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="92" height="20" uuid="f57c204d-f456-4910-8dad-00bb47ecfed5"/>
+				<text><![CDATA[CPF :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="0" width="92" height="20" uuid="0185c68c-8d14-4211-a3b6-6d60e1810562"/>
+				<text><![CDATA[Nome:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="0" width="92" height="20" uuid="ef9fc09d-d42d-4fa8-87fd-e706bc3337f5"/>
+				<text><![CDATA[Data Nascimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="0" width="92" height="20" uuid="e1672178-ddd2-4a91-953d-e2844f02b7b9"/>
+				<text><![CDATA[Cargo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="0" width="92" height="20" uuid="11fb38ad-b787-4d11-9450-2c4ee0135703"/>
+				<text><![CDATA[Data Registro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="0" width="92" height="20" uuid="7699328b-d4a3-4be1-8b28-cbc6572b2d8e"/>
+				<text><![CDATA[Data Batismo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="92" height="20" uuid="51c202c1-2455-4794-a165-d3ea13aa9a70"/>
+				<textFieldExpression><![CDATA[$F{pessoa_cpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="92" y="0" width="92" height="20" uuid="8aa4945e-dae2-48a5-bb3a-6a3678f67012"/>
+				<textFieldExpression><![CDATA[$F{pessoa_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="0" width="92" height="20" uuid="d4f76ece-1111-4c6e-9a20-6e6e4076f96f"/>
+				<textFieldExpression><![CDATA[$F{pessoa_dataNascimento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="92" height="20" uuid="c21a226f-28a0-4cb6-af24-ffa79b3b0fa0"/>
+				<textFieldExpression><![CDATA[$F{cargos_dsc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="0" width="92" height="20" uuid="9614394b-7acf-4a46-9f09-f983bf4459d4"/>
+				<textFieldExpression><![CDATA[$F{membros_dataRegistro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="0" width="92" height="20" uuid="331c01f1-c689-4ebd-b784-c2af88dfe785"/>
+				<textFieldExpression><![CDATA[$F{membros_dataBatismo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="2" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="2" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
